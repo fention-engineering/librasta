@@ -252,7 +252,7 @@ void bytesToRastaRedundancyPacket(struct RastaByteArray data, struct crc_options
     // and the trailing checksum. Otherwise the length arithmetic below would underflow and
     // cause out-of-bounds reads. The carried data (and its checksum) are zeroed so the caller
     // can safely free packet->data.data and packet->data.checksum.
-    if (data.length < 8 + (checksum_type.width / 8)) {
+    if (data.length < 8u + (unsigned int)(checksum_type.width / 8)) {
         rmemset(packet, 0, sizeof(*packet));
         packet->checksum_type = checksum_type;
         packet->checksum_correct = 0;
