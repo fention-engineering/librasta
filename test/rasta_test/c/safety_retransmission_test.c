@@ -69,7 +69,7 @@ void test_sr_retransmit_data_shouldSendFinalHeartbeat() {
 
     mux.redundancy_channel = &fake_channel;
 
-    rasta_connection connection;
+    rasta_connection connection = {0};
     connection.remote_id = SERVER_ID;
     connection.fifo_retransmission = fifo_init(0);
     connection.redundancy_channel = &fake_channel;
@@ -145,7 +145,7 @@ void test_sr_retransmit_data_shouldRetransmitPackage() {
 
     mux.redundancy_channel = &fake_channel;
 
-    struct rasta_connection connection;
+    struct rasta_connection connection = {0};
     connection.remote_id = SERVER_ID;
     connection.fifo_retransmission = fifo_init(1);
     connection.redundancy_channel = &fake_channel;
