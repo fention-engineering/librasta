@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v7
 
     - name: 'Clang Format'
-      uses: DoozyX/clang-format-lint-action@v0.16.2
+      uses: DoozyX/clang-format-lint-action@v0.20
       with:
         source: '.'
         extensions: 'h,cpp,c'
@@ -48,7 +48,7 @@ jobs:
 
     - name: Cache gRPC
       id: cache-grpc
-      uses: actions/cache@v3
+      uses: actions/cache@v6
       with:
         path: ${{github.workspace}}/deps/grpc
         key: ${{ runner.os }}-grpc
@@ -70,7 +70,7 @@ jobs:
 
     - name: Cache wolfssl
       id: cache-wolfssl
-      uses: actions/cache@v3
+      uses: actions/cache@v6
       with:
         path: ${{github.workspace}}/deps/wolfssl
         key: ${{ runner.os }}-wolfssl

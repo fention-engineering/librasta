@@ -26,18 +26,18 @@ jobs:
     env:
       BUILD_TYPE: Release
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
       - name: Install Dependencies
         run: sudo apt-get install build-essential libcunit1 libcunit1-doc libcunit1-dev doxygen graphviz
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v3
+        uses: actions/configure-pages@v6
       - name: Configure CMake
         run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DBUILD_DOCUMENTATION=ON
       - name: Build
         run: cmake --build ${{github.workspace}}/build --target documentation --config ${{env.BUILD_TYPE}} -v
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./build/doc/html
 
@@ -51,4 +51,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v5
