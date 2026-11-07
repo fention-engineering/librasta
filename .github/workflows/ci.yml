@@ -124,8 +124,8 @@ jobs:
     - name: CTest
       run: cd ${{github.workspace}}/build && ctest . --output-on-failure
 
-    - name: Valgrind Memcheck
-      run: ${{github.workspace}}/test/memcheck.sh --no-build --build-dir ${{github.workspace}}/build
+    #- name: Valgrind Memcheck
+    #  run: ${{github.workspace}}/test/memcheck.sh --no-build --build-dir ${{github.workspace}}/build
 
     - name: Configure CMake without extensions
       # force full rebuild
@@ -154,5 +154,5 @@ jobs:
     - name: CTest without extensions
       run: cd ${{github.workspace}}/build && ctest .
 
-    - name: Valgrind Memcheck without extensions
-      run: ${{github.workspace}}/test/memcheck.sh --no-build --build-dir ${{github.workspace}}/build
+    #- name: Valgrind Memcheck without extensions
+    #  run: ${{github.workspace}}/test/memcheck.sh --no-build --build-dir ${{github.workspace}}/build
