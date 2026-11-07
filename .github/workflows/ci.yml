@@ -60,13 +60,13 @@ jobs:
         git clone --recurse-submodules -b v1.84.1 --depth 1 --shallow-submodules https://github.com/grpc/grpc
         cd grpc
         mkdir -p cmake/build && cd cmake/build
-        cmake ../.. -DgRPC_INSTALL=ON
+        cmake ../.. -DgRPC_INSTALL=ON -DCMAKE_INSTALL_PREFIX=/usr/local
         make -j8
 
     - name: Use gRPC
       run: |
         cd ${{github.workspace}}/deps/grpc/cmake/build
-        sudo make install
+        sudo cmake --install . --prefix /usr/local
 
     - name: Cache wolfssl
       id: cache-wolfssl

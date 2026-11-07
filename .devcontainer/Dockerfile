@@ -34,7 +34,7 @@ RUN cd /tmp \
  && git clone --recurse-submodules -b v1.84.1 --depth 1 --shallow-submodules https://github.com/grpc/grpc \
  && cd grpc \
  && mkdir -p cmake/build && cd cmake/build \
- && cmake ../.. -DgRPC_INSTALL=ON \
+ && cmake ../.. -DgRPC_INSTALL=ON -DCMAKE_INSTALL_PREFIX=/usr/local \
  && make -j16 && make install \
  && cd / && rm -rf /tmp/grpc
 
