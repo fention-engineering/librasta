@@ -13,7 +13,7 @@ The following dependencies are required for building the RaSTA library and binar
 * if `ENABLE_RASTA_TLS` is enabled: [WolfSSL](https://www.wolfssl.com/) (package `wolfssl` or similar).
 * if `BUILD_RASTA_GRPC_BRIDGE` is enabled: gRPC (package `grpc` or similar)
 
-We tested with WolfSSL version 5.2.0-stable and gRPC version 1.47.0. For other versions, we cannot guarantee that you will be able to build the library.
+We tested with WolfSSL version 5.2.0-stable and gRPC version 1.84.1. For other versions, we cannot guarantee that you will be able to build the library.
 
 For debug purposes (if you want to dissect recorded TLS traffic with Wireshark), it can be useful to enable the *secret callback* of WolfSSL, which gives you access to the TLS connection secrets. For this, WolfSSL needs to be built manually with the configuration flags `--enable-dtls --enable-debug --enable-certgen --enable-tls13 CFLAGS="-DHAVE_SECRET_CALLBACK" --enable-opensslextra`.
 

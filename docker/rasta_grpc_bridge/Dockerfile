@@ -5,10 +5,10 @@ RUN apt-get update && \
     export DEBIAN_FRONTEND=noninteractive && \
     apt-get -y install --no-install-recommends libtool autogen automake autoconf git ca-certificates build-essential cmake pkg-config libcunit1 libcunit1-doc libcunit1-dev
 RUN cd /tmp \
- && git clone --recurse-submodules -b v1.47.0 --depth 1 --shallow-submodules https://github.com/grpc/grpc \
+ && git clone --recurse-submodules -b v1.84.1 --depth 1 --shallow-submodules https://github.com/grpc/grpc \
  && cd grpc \
  && mkdir -p cmake/build && cd cmake/build \
- && cmake ../.. -DgRPC_INSTALL=ON \
+ && cmake ../.. -DgRPC_INSTALL=ON -DCMAKE_INSTALL_PREFIX=/usr/local \
  && make -j16 && make install \
  && cd / && rm -rf /tmp/grpc
 ENV LD_LIBRARY_PATH=/usr/local/lib:.
