@@ -32,19 +32,19 @@ jobs:
       run: sudo apt-get update
 
     - name: Install CUnit
-      run: sudo apt-get install libcunit1 libcunit1-doc libcunit1-dev
+      run: sudo apt-get install -y libcunit1 libcunit1-doc libcunit1-dev
 
     - name: Install libopaque dependencies
-      run: sudo apt-get install libsodium-dev pkgconf
+      run: sudo apt-get install -y libsodium-dev pkgconf
 
     - name: Install gRPC dependencies
-      run: sudo apt-get install build-essential autoconf libtool
+      run: sudo apt-get install -y build-essential autoconf libtool cmake
 
     - name: Install wolfssl dependencies
-      run: sudo apt-get install libtool autogen automake
+      run: sudo apt-get install -y libtool autogen automake
 
     - name: Install valgrind
-      run: sudo apt-get install valgrind
+      run: sudo apt-get install -y valgrind
 
     - name: Cache gRPC
       id: cache-grpc
@@ -60,7 +60,7 @@ jobs:
         git clone --recurse-submodules -b v1.47.0 --depth 1 --shallow-submodules https://github.com/grpc/grpc
         cd grpc
         mkdir -p cmake/build && cd cmake/build
-        cmake ../.. -DgRPC_INSTALL=ON
+        cmake ../.. -DgRPC_INSTALL=ON -DCMAKE_CXX_FLAGS="-include cstdint"
         make -j8
 
     - name: Use gRPC
